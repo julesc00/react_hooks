@@ -1,25 +1,18 @@
-import React from "react"
+import React, { useState } from 'react';
 
-class MyName extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: ""}
+const MyName = () => {
+  const [name, setName] = useState("")
+
+  const handleChange = evt => {
+    setName(evt.target.value)
   }
 
-  handleChange(evt) {
-    this.setState({ name: evt.target.value })
-  }
+  return (
+    <div>
+      <h1>My name is: {name}</h1>
+      <input type="text" value={name} onChange={handleChange}/>
+    </div>
+  );
+};
 
-  render() {
-    const { name } = this.state
-
-    return (
-      <div>
-        <h1>My name is {name}</h1>
-        <input type="text" value={name} onChange={this.handleChange}/>
-      </div>
-    )
-  }
-}
-
-export default MyName
+export default MyName;
