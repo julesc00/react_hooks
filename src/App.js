@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
+import { useInput } from "react-hookedup"
 
 const MyName = () => {
-  const [name, setName] = useState("")
-
-  const handleChange = evt => {
-    setName(evt.target.value)
-  }
+  const { value, onChange } = useInput("")
 
   return (
     <div>
-      <h1>My name is: {name}</h1>
-      <input type="text" value={name} onChange={handleChange}/>
+      <h1>My name is: {value}</h1>
+      <input type="text" value={value} onChange={onChange}/>
     </div>
   );
 };
