@@ -22,16 +22,18 @@ const MyName = () => {
   currentHook = 0
   const [name, setName] = useState("")
   const [lastName, setLastName] = useState("")
+  const [enableFirstName, setEnableFirstName] = useState(false)
 
-  const handleChange = evt => {
-    setName(evt.target.value)
-  }
+  const handleChange = evt => setName(evt.target.value)
 
   const handleLastNameChange = evt => setLastName(evt.target.value)
 
+  const handleEnableChange = evt => setEnableFirstName(!enableFirstName)
+
   return (
     <div>
-      <h1>My name is: {name} {lastName}</h1>
+      <h1>My name is: {enableFirstName ? name : ""} {lastName}</h1>
+      <input type="checkbox" value={enableFirstName} onChange={handleEnableChange} />
       <input type="text" value={name} onChange={handleChange} />
       <input type="text" value={lastName} onChange={handleLastNameChange} />
     </div>
